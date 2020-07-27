@@ -4,24 +4,24 @@ import java.util.*
 
 fun main() {
     var scanner = Scanner(System.`in`)
-    var totaltickets = 0
-    while(totaltickets != -1) {
+    var totalTickets = 0
+    while(totalTickets != -1) {
         print("Please enter number of tickets: ")
-        totaltickets = scanner.nextInt()
+        totalTickets = scanner.nextInt()
         print("How many round-trip tickets: ")
-        var roundtriptickets = scanner.nextInt()
-        var ticketprice = Ticket(totaltickets, roundtriptickets)
-        ticketprice.print()
+        var roundTripTickets = scanner.nextInt()
+        var ticketPrice = Ticket(totalTickets, roundTripTickets)
+        ticketPrice.print()
         print("Enter the -1 if you don't buy anymore")
-        totaltickets = scanner.nextInt()
+        totalTickets = scanner.nextInt()
     }
 }
 
-class Ticket(var totaltickets : Int, var roundtriptickets : Int){
+class Ticket(var totalTickets : Int, var roundTripTickets : Int){
     fun print(){
-        var totalPrice = (totaltickets-roundtriptickets)*1000+(roundtriptickets*1800);
-        println("Total Tickets: $totaltickets")
-        println("Round-Trip: $roundtriptickets")
+        var totalPrice = (totalTickets-roundTripTickets)*1000+(roundTripTickets*1800);
+        println("Total Tickets: $totalTickets")
+        println("Round-Trip: $roundTripTickets")
         println("Total: $totalPrice")
     }
 }
