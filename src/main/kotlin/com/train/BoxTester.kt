@@ -1,9 +1,12 @@
 package com.train.post
 
+import sun.font.TrueTypeFont
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 fun main() {
+    var i : Int
     var scanner = Scanner(System.`in`)
     print("Please enter object's length: ")
     var length = scanner.nextFloat()
@@ -13,37 +16,34 @@ fun main() {
     var height = scanner.nextInt()
     var box3 = PostBox3(length,width, height)
     var box5 = PostBox5(length,width, height)
-    if(length <= 23 && width<= 14 && height <=13 ){
-        box3.validate(length, width, height)
-    } else if(length <= 39.5 && width <= 27.5 && height <= 23){
-        box5.validate(length, width, height)
-    } else {
-        println("Your size is too big")
+    when{
+        box3.validate(length,width, height) -> println("Box3")
+        box5.validate(length,width, height) -> println("Box5")
+        else -> println("Your size is too big")
     }
+
+
+
+
 
 
 }
 
-
-class PostBox3(var length: Float, var width:Float, var height: Int){
-    fun validate(length: Float,width: Float,height: Int) : Boolean {
-        if (length <= 23 && width <= 14 && height <= 13) {
-            println("You must use Box3")
-            return true
-        } else {
-            return false
+open class PostBox(var length: Float,var width: Float,var height: Int){
+        open fun validate(length: Float, width: Float, height: Int): Boolean {
+            return (length < this.length && width < this.width && height < this.height)
         }
-     }
 }
 
-class PostBox5(var length: Float,var width:Float,var height: Int){
-    fun validate(length: Float,width: Float,height: Int) : Boolean {
-        if(length <= 39.5 && width <= 27.5 && height <= 23){
-            println("You must use Box5")
-            return true
-        } else {
-            return false
-        }
-    }
+class PostBox3(length: Float,width: Float,height: Int) : PostBox(23f , 14f, 13) {
+
+
+
+}
+
+class PostBox5(length: Float, width:Float, height: Int) : PostBox(39.5f, 27.5f, 23){
+
+
+
 }
 
