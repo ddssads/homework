@@ -1,5 +1,12 @@
 package com.train;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import org.w3c.dom.ls.LSOutput;
+
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class BoxTester {
@@ -11,13 +18,13 @@ public class BoxTester {
         float width = scanner.nextFloat();
         System.out.print("Please enter object's height: ");
         int height = scanner.nextInt();
-        PostBox3 box3 = new PostBox3(length,width,height);
-        PostBox5 box5 = new PostBox5(length,width,height);
-        if(length <= 23 && width <= 14 && height <= 13){
-            box3.vaildate(length,width,height);
-        }else if(length <=39.5 && width <=27.5 && height <= 23){
-            box5.vaildate(length,width,height);
-        }else {
+        PostBox3 box3 = new PostBox3();
+        PostBox5 box5 = new PostBox5();
+        if(box3.vaildate(length,width,height)){
+            box3.getName();
+        } else if(box5.vaildate(length,width,height)){
+            box5.getName();
+        } else {
             System.out.println("Your size is too big");
         }
     }
